@@ -12,19 +12,28 @@ console.log(document.querySelector('.guess').value) ;
 */
 
 // Handling click events
-const secretNumber = Math.trunc(Math.random()*20)+1;
+let secretNumber = Math.trunc(Math.random()*20)+1;
 let score=20;
-document.querySelector('.secretNumber').textContent=secretNumber;
+
 document.querySelector('.check').addEventListener('click', function(){
-    const guess=docuemnt.querySelector('.guess').value;
-    console.log(typeof guess);
+    const guess=Number(document.querySelector('.guess').value);
+    console.log(guess,typeof guess);
+    
+    // When there is no inputs
     if(!guess){
         document.querySelector('.message').textContent='No number!';
 
     }
+
+    // When player wins
     else if(guess===secretNumber){
         document.querySelector('.message').textContent='Correct Number!!!';
+        document.querySelector('.number').textContent=secretNumber;
+        document.querySelector('body').style.backgroundColor='#60b347';
+
+        document.querySelector('.number').style.width='30rem';
     }
+    // when guess is too high
     else if(guess>secretNumber){
 
         if(score>1){
@@ -36,6 +45,8 @@ document.querySelector('.check').addEventListener('click', function(){
             document.querySelector('.score').textContent = 0;
         }
     }
+
+    // Whne guess is too low
     else if(guess<secretNumber){
         if(score>1){
             document.querySelector('.message').textContent='To low';
@@ -49,3 +60,13 @@ document.querySelector('.check').addEventListener('click', function(){
        
 });
 
+document.querySelector('.again').addEventListener('click', function(){
+     secretNumber = Math.trunc(Math.random()*20)+1;
+     score=20;
+    document.querySelector('.score').value=score;
+    document.querySelector('.number').textContent='?';
+    document.querySelector('.message').textContent='Lets Start The Game';
+    document.querySelector('.guess').value='';
+    document.querySelector('body').style.backgroundColor='#222';
+    document.querySelector('body').style.width='15rem';
+});
