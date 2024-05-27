@@ -38,7 +38,32 @@ const restaurant = {
     console.log(`Here os your delicious pasta with ${ing1},${ing2},${ing3}`);
   }
 };
+ const orderSet=new Set([
+  'Pasta',
+  'Pasta',
+  'Pasta',
+  'Pizza',
+  'Risotto',
+ ]);
+ console.log(orderSet);
+ console.log(new Set('jonas'));
+ console.log(orderSet.size);
+ console.log(orderSet.has('Bread'));
+orderSet.add('Garlic Bread');
+orderSet.add('Garlic Bread');
+orderSet.delete('Risotto');
+// orderSet.clear();
+console.log(orderSet);
 
+
+
+for(const order of orderSet) console.log(order);
+
+// Example
+const staff=['Waiter', 'Chef', 'Waiter', 'Manager'];
+const staffUnique= [...new Set(staff)];
+console.log(staffUnique);
+console.log(new Set(['Waiter', 'Chef', 'Waiter', 'Manager']));
 // const arr=[1,2,...[3,4]];
 // const [a,b,...others]=[1,2,3,4,5];
 // console.log(a,b,others);
